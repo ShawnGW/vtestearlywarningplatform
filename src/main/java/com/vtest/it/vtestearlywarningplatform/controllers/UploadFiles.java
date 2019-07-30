@@ -6,8 +6,10 @@ import com.vtest.it.vtestearlywarningplatform.pojo.rawdataBean.DealWaferIdInform
 import com.vtest.it.vtestearlywarningplatform.pojo.rawdataBean.RawdataInitBean;
 import com.vtest.it.vtestearlywarningplatform.services.mes.impl.GetMesInforImpl;
 import com.vtest.it.vtestearlywarningplatform.services.probermappingparsetools.TelOpusProberMappingDaParse;
+import com.vtest.it.vtestearlywarningplatform.services.tools.PerfectCopy;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +25,19 @@ import java.util.*;
 @RequestMapping("/upload")
 @CrossOrigin
 public class UploadFiles {
+    @Value("${system.properties.tel.mapdown}")
+    private String mapdown;
     @Autowired
     private TelOpusProberMappingDaParse telOpusProberMappingDaParse;
     @Autowired
     private GetMesInforImpl getMesInfor;
     @Autowired
     private TelPlatformDataDeal telPlatformDataDeal;
+    @Autowired
+    private PerfectCopy perfectCopy;
     private SimpleDateFormat simpleDateFormatOthers = new SimpleDateFormat("yyMMddHHmm");
     @PostMapping("/tel")
-    public Map<Boolean,String> upload(Part[] files,String cpProcess,Boolean dataToMes,String type,String lot){
+    public Map<Boolean, String> upload(Part[] files, String cpProcess, Boolean ifMapDown, String type, String lot) {
         ArrayList<File> sourceFiles=new ArrayList<>();
         Map<Boolean,String> result=new HashMap<>();
         try {
@@ -42,8 +48,11 @@ public class UploadFiles {
             try {
                 for (Part file : files) {
                     file.getSubmittedFileName();
-                    file.write("E:/upload/"+file.getSubmittedFileName());
-                    File uploadFile=new File("E:/upload/"+file.getSubmittedFileName());
+                    file.write("/upload/" + file.getSubmittedFileName());
+                    File uploadFile = new File("/upload/" + file.getSubmittedFileName());
+                    if (ifMapDown) {
+                        perfectCopy.copy(uploadFile, new File(mapdown + lot + "/" + getFileNameAfterModify(uploadFile.getName())));
+                    }
                     sourceFiles.add(uploadFile);
                     if (uploadFile.getName().endsWith(".DAT")){
                         datFileList.add(uploadFile);
@@ -146,6 +155,11 @@ public class UploadFiles {
             }
         }
         return result;
+    }
+
+    public String getFileNameAfterModify(String fileName) {
+        Map<String, String> information = getFileInformaton(fileName);
+        return information.get("waferId") + "1" + information.get("suffix");
     }
     public Map<String, String> getFileInformaton(String mappingName) {
         Map<String, String> information = new HashMap<>();

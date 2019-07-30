@@ -9,7 +9,7 @@ system:
       temp-rawdata: /TempRawdata/
 
 server:
-  port: 10012
+  port: 10013
 spring:
   servlet:
     multipart:
