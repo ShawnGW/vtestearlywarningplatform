@@ -38,6 +38,7 @@ public class UploadFiles {
     private SimpleDateFormat simpleDateFormatOthers = new SimpleDateFormat("yyMMddHHmm");
     @PostMapping("/tel")
     public Map<Boolean, String> upload(Part[] files, String cpProcess, Boolean ifMapDown, String type, String lot) {
+        lot = lot.trim();
         ArrayList<File> sourceFiles=new ArrayList<>();
         Map<Boolean,String> result=new HashMap<>();
         try {
@@ -68,6 +69,10 @@ public class UploadFiles {
                 return  result;
             }
             if (type.equals("normal")){
+                if (null == getMesInfor.getCustomerAndDeviceByLot(lot).getCustomerCode()) {
+                    result.put(false, "this lot is not exist ,please check it again!");
+                    return result;
+                }
                 SlotAndSequenceConfigBean slotAndSequenceConfigBean = getMesInfor.getLotSlotConfig(lot);
                 boolean slotFlag = false;
                 if (slotAndSequenceConfigBean.getReadType().toUpperCase().equals("SLOT")) {
@@ -100,7 +105,7 @@ public class UploadFiles {
                     LinkedHashMap<String, String> dataProperties = new LinkedHashMap<>();
                     dataProperties.put("Wafer ID", rightWaferId);
                     dataProperties.put("Operator", "V888");
-                    dataProperties.put("CP Process", cpProcess);
+                    dataProperties.put("CP Process", cpProcess.trim());
                     rawdataInitBean.setDataProperties(dataProperties);
                     dealWaferIdInformationBean.setRawdataInitBean(rawdataInitBean);
                     dealWaferIdInformationBean.setFile(datFile);
