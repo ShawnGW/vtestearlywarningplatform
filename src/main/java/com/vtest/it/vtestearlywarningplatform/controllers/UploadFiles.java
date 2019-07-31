@@ -106,6 +106,7 @@ public class UploadFiles {
                     dataProperties.put("Wafer ID", rightWaferId);
                     dataProperties.put("Operator", "V888");
                     dataProperties.put("CP Process", cpProcess.trim());
+                    dataProperties.put("Lot ID", lot);
                     rawdataInitBean.setDataProperties(dataProperties);
                     dealWaferIdInformationBean.setRawdataInitBean(rawdataInitBean);
                     dealWaferIdInformationBean.setFile(datFile);
@@ -140,6 +141,7 @@ public class UploadFiles {
                     dataProperties.put("CP Process", cpProcess);
                     dataProperties.put("Test Start Time", testStartTime);
                     dataProperties.put("Test End Time", testEndTime);
+                    dataProperties.put("Lot ID", lot);
                     rawdataInitBean.setDataProperties(dataProperties);
                     dealWaferIdInformationBean.setRawdataInitBean(rawdataInitBean);
                     dealWaferIdInformationBean.setFile(rmpFile);
