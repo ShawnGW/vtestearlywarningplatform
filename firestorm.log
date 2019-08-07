@@ -1,158 +1,397 @@
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20004} created. {call WebMES.dbo.pro_getWaferid(?,?)}
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20004} Parameters : [CL5Y0P.1, 12]
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20004} Types : [VARCHAR, VARCHAR]
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20004} executed. 69.863531 millis. {call WebMES.dbo.pro_getWaferid(?,?)}
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} open
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} Header: [WaferID]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} Result: [CL5Y0P-12]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} closed
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
-DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} commited
-DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} setAutoCommit true
-DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220003} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, INTEGER, INTEGER, INTEGER, DOUBLE, TIMESTAMP, INTEGER, INTEGER, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, INTEGER, INTEGER, INTEGER, DOUBLE, TIMESTAMP, INTEGER, INTEGER, INTEGER, INTEGER, INTEGER, VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220003} executed. 6.368644 millis. INSERT INTO vtdaprober.bin_wafer_summary(custom_code, device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, map_cols, map_rows, min_x, min_y, others_params)
+        VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        ON DUPLICATE KEY UPDATE oprator=?, tester_program=?, tester_id=?, prober_id=?, Prober_card_id=?, pid_name=?, pid_version=?, start_time=?, gross_die=?, pass_die=?, fail_die=?, yield=?, end_time=?, check_status=?, map_cols=?, map_rows=?, min_x=?, min_y=?, others_params=?,load_time=now();
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220003} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} Parameters : [TTH-30]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} Types : [VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} executed. 4.615646 millis. SELECT custom_code as customer_code,device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, check_result,map_cols, map_rows, min_x, min_y, others_params FROM VTPTMT.bin_wafer_summary WHERE tester_id=?;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150007} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150007} Header: [custom_code, device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, check_result, map_cols, map_rows, min_x, min_y, others_params]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150007} Result: [PRA, P25Q40HGWF-J, AP23806, CP1, AP23806-05-A5, V100, V_PY1603V2D_P25Q40HD_25C_V02_25_CP1, TTH-30, PTL-01, PY1603V2A-PC-C1C2-17, PS_PRA_CP25Q40HGWF-J02, 1, 2019-08-07 07:26:23.0, 77891, 75128, 2763, 96.45, 2019-08-07 12:23:45.0, 0, 10 interflow Fail;, 432, 239, 5, 5, {"Customer Test Spec":"na","WaferID_read":"OCR","Index X(mm)":"692","Fab Device":"PY1603V2K","WF_Size":"12","Map Reference":"(332,30);(220,239)","TestDieMinX":"9","Theory Test Time":"5.48","Retest Rate":"0","TestDieMinY":"7","Inner MotherLot":"PRAMD32003","Stop Yield":"90","Index Y(mm)":"1247","shipLot":"AP23806","Wafer_Sequence":"1-25","Lot Status":"1","Lot Start Time":"2019-08-06 20:49:29.0","Site To Site":"CP1:5;CP2:5","MES Stand Gross Die":"77891","Inner Lot":"PRAMD32003.07","Asy Device":"NA","Notch":"180-Degree","Sites":"64","Hold Count":"0","GPIB_Bin":"0","PE Owner":"Wales","MaxX":"437","MaxY":"243","Process Short Flow":"TB1-CP1-BK1-CP2-CP9-WV1-WP1-WPF","Is Trimed":"False","Process Yield":"NA|95.00","OS Bins":"2","Slot":"5","Pass Bins":"1","Tester SoftWare Revision":"CRAFT_3380_2.40-SP7","Chines Short Name":"NA","Is OTP":"False","Assigned Testers":"NA","Wip Stage":"B","Prober Device":"PRA1N4MHDXTNTCVA","PO Number":"NA","Load File":"na","Special Bins":"na","DataBase":"TEL","Continue Fail":"10ea","TestDieMaxX":"432","TestDieMaxY":"241","MES Test Gross Die":"77891","CP Yields":"CP1&96.45%;","RightID":"5","TestTime":"306","Tester Model":"Chroma","Major Fail":"na","Chinese Name":"普冉半导体(上海)有限公司","Part DESC":"v2.25,双定位","ALL CP Programs":"CP1T0:V_PY1603V2D_P25Q40HD_25C_V02_25_CP1;","Worker Order":"PRA20190805.2","Wip Step":"CP1T0","customerNotch":"NA","Wafer PCS":"5","Is COP":"False","CTC PO Number":"NA"}]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150007} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} Parameters : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} Types : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} executed. 3.700964 millis. SELECT custom_code,device FROM VTPTMT.mes_data_from;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Header: [custom_code, device]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [AMC, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [ANE, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [ASH, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, P7516F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, P7516G]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKB28C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKB28E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKE81C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKE81D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKE81E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKR49C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKR49D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKR49E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMKR49F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMLP50A]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BES, TMLP50B]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, P7516F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, P7516G]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKB28C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKB28E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKE81C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKE81D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKE81E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKR49C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKR49D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKR49E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMKR49F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMLP50A]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [BID, TMLP50B]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, P7516F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, P7516G]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKB28C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKB28E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKE81C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKE81D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKE81E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKR49C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKR49D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKR49E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMKR49F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMLP50A]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [EJQ, TMLP50B]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [FJT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [FUA, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [HGK, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [HTS, HS8786B1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [HTS, HS8787C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [HTS, HS8916CMS1A1.BP]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [HTS, HS8916CMS1A3.CP]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [HUT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [JSC, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [MOT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [SKC, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [SLA, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [TDT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} Result: [YFN, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150008} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Parameters : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Types : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} executed. 3.382276 millis. SELECT host,init_url,acode FROM VTPTMT.mesconfig;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150009} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150009} Header: [host, init_url, acode]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150009} Result: [http://vtmesap01, http://vtmesap01/vt_mes/ajaxprocess.aspx, 65195845153489435181]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150009} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Parameters : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Types : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} executed. 3.10369 millis. SELECT host,init_url,acode FROM VTPTMT.mesconfig;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150010} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150010} Header: [host, init_url, acode]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150010} Result: [http://vtmesap01, http://vtmesap01/vt_mes/ajaxprocess.aspx, 65195845153489435181]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150010} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} pool-connect
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} setAutoCommit false
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20005} created. {call WebMES.dbo.pro_GetWaferInfo(?,?)}
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20005} Parameters : [CL5Y0P-12, CP1]
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20005} Types : [VARCHAR, VARCHAR]
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20005} executed. 1999.36817 millis. {call WebMES.dbo.pro_GetWaferInfo(?,?)}
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} open
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} Header: [lot_id, inner_lot, inner_monther_lot, customer_code, device_name, wafer_id, lot_starttime, pe_owner, tester_SoftWare_revision, tester_model, chinese_name, chinese_shortname, part_num, process_spec, process_revision, worker_order, lot_status, wip_stage, wip_step, po_number, customer_to_customer_po_number, part_desc, map_or_ink, is_otp, is_cop, fab_device, asy_device, ship_lot, assigned_testers, is_trimed, load_file, customer_tester_spec, map_reference, process_short_flow, wafer_pcs, sites, site_to_site, continue_fail, prober_device, operator, tester_program, all_cp_programs, tester_id, prober_id, prober_card_id, cp_process, hold_count, test_start_time, test_end_time, test_gross_die, stand_gross_die, gross_die, pass_die, fail_die, wafer_yield, stop_yield, major_fail, process_yield, cp_yield, pass_bins, os_bins, special_bins, theory_test_time, retest_rate, data_base, test_time, wafer_id_read, wafer_sequence, wf_size, index_x, index_y, map_cols, map_rows, gpib_bin, notch, customer_notch, slot, right_id, minx, miny, maxx, maxy, test_die_minx, test_die_miny, test_die_maxx, test_die_maxy]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} Result: [CL5Y0P.1, AVWMD29007.06, AVWMD29007, AVW, AW269FX, CL5Y0P-12, 2019-07-20 15:05:18.0, clare.zhang, NA, M7000, 上海艾为电子技术股份有限公司, NA, AVW_CAW269FX00, PS_AVW_CAW26902, 8, AVW20190716.111251_7, 1, B, CP1T0, SFP220190716002, NA, NA, OnlyMap, 1, 1, NA, NA, CL5Y0P.1, NA, 1, NA, AW-P269-AW269E-20160817, NA, TB1-CP1-WV1-WP1-WPF, 5, 2, CP1:3, 10, AVW1AW269FTNE2VU, NA, AW269FX_CP_2S_V1P0, CP1T0:AW269FX_CP_2S_V1P0;, TTM-05, PTL-17, AW269-PC-08, NA, 0, NA, NA, 22408, 22408, NA, NA, NA, NA, 91, BIN8+BIN11>1%需要叫修, 96.50|96.50, NA, 1,2, 5, 11;12;15, 6.70, NA, NA, NA, Slot, 1-25, 8, 930, 1380, NA, NA, 0, 180-Degree, NA, 12, 12, NA, NA, NA, NA, NA, NA, NA, NA]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} closed
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, pstmt-20005} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20003} Parameters : [AP23814-25-D7, CP2]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20003} Types : [VARCHAR, VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, cstmt-20003} executed. 1956.26762 millis. {call WebMES.dbo.pro_GetWaferInfo(?,?)}
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50007} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50007} Header: [lot_id, inner_lot, inner_monther_lot, customer_code, device_name, wafer_id, lot_starttime, pe_owner, tester_SoftWare_revision, tester_model, chinese_name, chinese_shortname, part_num, process_spec, process_revision, worker_order, lot_status, wip_stage, wip_step, po_number, customer_to_customer_po_number, part_desc, map_or_ink, is_otp, is_cop, fab_device, asy_device, ship_lot, assigned_testers, is_trimed, load_file, customer_tester_spec, map_reference, process_short_flow, wafer_pcs, sites, site_to_site, continue_fail, prober_device, operator, tester_program, all_cp_programs, tester_id, prober_id, prober_card_id, cp_process, hold_count, test_start_time, test_end_time, test_gross_die, stand_gross_die, gross_die, pass_die, fail_die, wafer_yield, stop_yield, major_fail, process_yield, cp_yield, pass_bins, os_bins, special_bins, theory_test_time, retest_rate, data_base, test_time, wafer_id_read, wafer_sequence, wf_size, index_x, index_y, map_cols, map_rows, gpib_bin, notch, customer_notch, slot, right_id, minx, miny, maxx, maxy, test_die_minx, test_die_miny, test_die_maxx, test_die_maxy]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50007} Result: [AP23814, PRAMD31009.08, PRAMD31009, PRA, P25Q40HDWF, AP23814-25-D7, 2019-08-04 20:31:08.0, Wales, CRAFT_3380_2.40-SP7, Chroma, 普冉半导体(上海)有限公司, NA, PRA_CP25Q40HDWF12, PS_PRA_CP25Q40HDWF12, 4, PRA20190801.2, 1, C, CP2T0, NA, NA, 双定位,v4.01, NA, 0, 0, PY1603V2D, NA, AP23814, NA, 0, na, na, (332,30);(220,239), TB1-CP1-BK1-CP2-WV1-WP1-WPF, 5, 64, CP1:5;CP2:5, 10ea, PRA2N4M25XTNTCVA, NA, V_PY1603V2D_P25Q40HD_25C_V04_02_CP2, CP1T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP1;CP2T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP2;, TTH-20, PTL-07, PY1603V2A-PC-19, NA, 0, NA, NA, 77891, 77891, NA, NA, NA, NA, 88, na, NA|93.00, CP1&97.15%, 1, 2, na, 3.07, NA, NA, NA, OCR, 1-25, 12, 692, 1247, NA, NA, 0, 180-Degree, NA, 25, 25, NA, NA, NA, NA, NA, NA, NA, NA]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50007} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} commited
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} setAutoCommit true
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-10001} pool-recycle
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120001} created. SELECT property,check_NA,check_equals,custom_code,issue_level FROM  VTPTMT.rawdata_properties_check_items;
 DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120001} Parameters : []
 DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120001} Types : []
-DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120001} executed. 3.785862 millis. SELECT property,check_NA,check_equals,custom_code,issue_level FROM  VTPTMT.rawdata_properties_check_items;
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} open
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Header: [property, check_NA, check_equals, custom_code, issue_level]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Customer Test Spec, true, na, BFS, 1]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Fab Device, true, na, AMC, 1]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Gross Die, true, Pass Die&Fail Die, ALL, 1]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [MES Stand Gross Die, true, na, ALL, 1]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [MES Test Gross Die, true, Gross Die, ALL, 1]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Notch, true, na, ALL, 1]
-DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120001} executed. 4.197128 millis. SELECT property,check_NA,check_equals,custom_code,issue_level FROM  VTPTMT.rawdata_properties_check_items;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} Header: [property, check_NA, check_equals, custom_code, issue_level]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} Result: [Customer Test Spec, true, na, BFS, 1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} Result: [Fab Device, true, na, AMC, 1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} Result: [Gross Die, true, Pass Die&Fail Die, ALL, 1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} Result: [MES Stand Gross Die, true, na, ALL, 1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} Result: [MES Test Gross Die, true, Gross Die, ALL, 1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} Result: [Notch, true, na, ALL, 1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150011} closed
 DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120001} clearParameters. 
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
 DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
-DEBUG main druid.sql.Connection - {conn-10001} connected
-DEBUG main druid.sql.Statement - {conn-10001, stmt-20000} created
-DEBUG main druid.sql.Statement - {conn-10001, stmt-20000} closed
-DEBUG main druid.sql.Connection - {conn-110001,procId-1913750} connected
-DEBUG main druid.sql.Connection - {conn-210001,procId-1913751} connected
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-10001, stmt-20001} created
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-10001, stmt-20001, rs-50000} query executed. 79.962576 millis. SELECT 1
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-10001, stmt-20001, rs-50000} open
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-10001, stmt-20001, rs-50000} Header: []
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-10001, stmt-20001, rs-50000} Result: [1]
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-10001, stmt-20001, rs-50000} closed
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-10001, stmt-20001} closed
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-210001} pool-connect
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-210001} pool-recycle
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-210001} pool-connect
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-210001, stmt-220000} created
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-210001, stmt-220000, rs-250000} query executed. 27.224589 millis. /* ping */ SELECT 1
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-210001, stmt-220000, rs-250000} open
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-210001, stmt-220000, rs-250000} Header: [1]
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-210001, stmt-220000, rs-250000} Result: [1]
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-210001, stmt-220000, rs-250000} closed
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-210001, stmt-220000} closed
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-210001} pool-recycle
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-110001} pool-connect
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-110001} pool-recycle
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-110001} pool-connect
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-110001, stmt-120000} created
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-110001, stmt-120000, rs-150000} query executed. 2.244042 millis. /* ping */ SELECT 1
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-110001, stmt-120000, rs-150000} open
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-110001, stmt-120000, rs-150000} Header: [1]
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-110001, stmt-120000, rs-150000} Result: [1]
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.ResultSet - {conn-110001, stmt-120000, rs-150000} closed
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Statement - {conn-110001, stmt-120000} closed
-DEBUG RMI TCP Connection(11)-127.0.0.1 druid.sql.Connection - {conn-110001} pool-recycle
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit false
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20002} created. {call WebMES.dbo.pro_GetLotDeviceInfo(?)}
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20002} Parameters : [CL5Y0P.1]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20002} Types : [VARCHAR]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20002} executed. 111.758442 millis. {call WebMES.dbo.pro_GetLotDeviceInfo(?)}
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20002, rs-50001} open
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20002, rs-50001} Header: [CustCode, CustPart, Lot]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20002, rs-50001} Result: [AVW, AW269FX, CL5Y0P.1]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20002, rs-50001} closed
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, pstmt-20002} clearParameters. 
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} commited
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit true
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit false
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20003} created. {call WebMES.dbo.pro_getSlotAndSequence(?)}
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20003} Parameters : [CL5Y0P.1]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20003} Types : [VARCHAR]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20003} executed. 217.129042 millis. {call WebMES.dbo.pro_getSlotAndSequence(?)}
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50002} open
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50002} Header: [sequence, read_type, gpib_bin]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50002} Result: [1-25, SLOT, 0]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20003, rs-50002} closed
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, pstmt-20003} clearParameters. 
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} commited
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit true
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit false
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20004} created. {call WebMES.dbo.pro_getWaferid(?,?)}
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20004} Parameters : [CL5Y0P.1, 12]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20004} Types : [VARCHAR, VARCHAR]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20004} executed. 20.566267 millis. {call WebMES.dbo.pro_getWaferid(?,?)}
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} open
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} Header: [WaferID]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} Result: [CL5Y0P-12]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20004, rs-50003} closed
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, pstmt-20004} clearParameters. 
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} commited
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit true
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-connect
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit false
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20005} created. {call WebMES.dbo.pro_GetWaferInfo(?,?)}
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20005} Parameters : [CL5Y0P-12, CP1]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20005} Types : [VARCHAR, VARCHAR]
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, cstmt-20005} executed. 1662.943092 millis. {call WebMES.dbo.pro_GetWaferInfo(?,?)}
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} open
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} Header: [lot_id, inner_lot, inner_monther_lot, customer_code, device_name, wafer_id, lot_starttime, pe_owner, tester_SoftWare_revision, tester_model, chinese_name, chinese_shortname, part_num, process_spec, process_revision, worker_order, lot_status, wip_stage, wip_step, po_number, customer_to_customer_po_number, part_desc, map_or_ink, is_otp, is_cop, fab_device, asy_device, ship_lot, assigned_testers, is_trimed, load_file, customer_tester_spec, map_reference, process_short_flow, wafer_pcs, sites, site_to_site, continue_fail, prober_device, operator, tester_program, all_cp_programs, tester_id, prober_id, prober_card_id, cp_process, hold_count, test_start_time, test_end_time, test_gross_die, stand_gross_die, gross_die, pass_die, fail_die, wafer_yield, stop_yield, major_fail, process_yield, cp_yield, pass_bins, os_bins, special_bins, theory_test_time, retest_rate, data_base, test_time, wafer_id_read, wafer_sequence, wf_size, index_x, index_y, map_cols, map_rows, gpib_bin, notch, customer_notch, slot, right_id, minx, miny, maxx, maxy, test_die_minx, test_die_miny, test_die_maxx, test_die_maxy]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} Result: [CL5Y0P.1, AVWMD29007.06, AVWMD29007, AVW, AW269FX, CL5Y0P-12, 2019-07-20 15:05:18.0, clare.zhang, NA, M7000, 上海艾为电子技术股份有限公司, NA, AVW_CAW269FX00, PS_AVW_CAW26902, 8, AVW20190716.111251_7, 1, B, CP1T0, SFP220190716002, NA, NA, OnlyMap, 1, 1, NA, NA, CL5Y0P.1, NA, 1, NA, AW-P269-AW269E-20160817, NA, TB1-CP1-WV1-WP1-WPF, 5, 2, CP1:3, 10, AVW1AW269FTNE2VU, NA, AW269FX_CP_2S_V1P0, CP1T0:AW269FX_CP_2S_V1P0;, TTM-05, PTL-17, AW269-PC-08, NA, 0, NA, NA, 22408, 22408, NA, NA, NA, NA, 91, BIN8+BIN11>1%需要叫修, 96.50|96.50, NA, 1,2, 5, 11;12;15, 6.70, NA, NA, NA, Slot, 1-25, 8, 930, 1380, NA, NA, 0, 180-Degree, NA, 12, 12, NA, NA, NA, NA, NA, NA, NA, NA]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-10001, cstmt-20005, rs-50004} closed
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-10001, pstmt-20005} clearParameters. 
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} commited
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} setAutoCommit true
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-10001} pool-recycle
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-110001} pool-connect
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-110001} setAutoCommit false
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-110001, pstmt-120001} created. SELECT property,check_NA,check_equals,custom_code,issue_level FROM  VTPTMT.rawdata_properties_check_items;
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-110001, pstmt-120001} Parameters : []
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-110001, pstmt-120001} Types : []
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-110001, pstmt-120001} executed. 3.319136 millis. SELECT property,check_NA,check_equals,custom_code,issue_level FROM  VTPTMT.rawdata_properties_check_items;
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} open
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Header: [property, check_NA, check_equals, custom_code, issue_level]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Customer Test Spec, true, na, BFS, 1]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Fab Device, true, na, AMC, 1]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Gross Die, true, Pass Die&Fail Die, ALL, 1]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [MES Stand Gross Die, true, na, ALL, 1]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [MES Test Gross Die, true, Gross Die, ALL, 1]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} Result: [Notch, true, na, ALL, 1]
-DEBUG http-nio-10013-exec-1 druid.sql.ResultSet - {conn-110001, pstmt-120001, rs-150001} closed
-DEBUG http-nio-10013-exec-1 druid.sql.Statement - {conn-110001, pstmt-120001} clearParameters. 
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-110001} commited
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-110001} setAutoCommit true
-DEBUG http-nio-10013-exec-1 druid.sql.Connection - {conn-110001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220001} Parameters : [PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220001} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220001} executed. 3756.845183 millis. DELETE FROM vtdaprober.bin_info_summary WHERE custom_code=? AND device=? AND lot_id=? AND cp_step=? AND wafer_no =? and id >0;
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220001} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} created. INSERT INTO vtdaprober.bin_info_summary(custom_code, device, lot_id, cp_step, wafer_no, site_id, soft_bin_no,
+        bin_count, pass_fail, test_type)
+        VALUES
+         (?,?,?,?,?,?,?,?,TRUE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?)  
+        ;
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} Parameters : [PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 1, 75161, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 2, 42, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 3, 2386, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 5, 102, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 6, 10, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 7, 175, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 23, 2, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 8, 11, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 9, 1, P, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 11, 1, P]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} executed. 16.968546 millis. INSERT INTO vtdaprober.bin_info_summary(custom_code, device, lot_id, cp_step, wafer_no, site_id, soft_bin_no,
+        bin_count, pass_fail, test_type)
+        VALUES
+         (?,?,?,?,?,?,?,?,TRUE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?)  
+        ;
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} Parameters : [PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 1, 75161, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 2, 42, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 3, 2386, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 5, 102, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 6, 10, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 7, 175, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 23, 2, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 8, 11, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 9, 1, F, PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, 0, 11, 1, F]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, INTEGER, INTEGER, INTEGER, VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} executed. 16.661377 millis. INSERT INTO vtdaprober.bin_info_summary(custom_code, device, lot_id, cp_step, wafer_no, site_id, soft_bin_no,
+        bin_count, pass_fail, test_type)
+        VALUES
+         (?,?,?,?,?,?,?,?,TRUE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?),
+                        
+                
+                    
+                            (?,?,?,?,?,?,?,?,FALSE,?)  
+        ;
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220005} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220003} Parameters : [PRA, P25Q40HDWF, AP23814, CP2, AP23814-25-D7, V888, V_PY1603V2D_P25Q40HD_25C_V04_02_CP2, TTH-20, PTL-07, PY1603V2A-PC-19, PS_PRA_CP25Q40HDWF12, 4, 2019-08-07 06:15:03.0, 77891, 75161, 2730, 96.5, 2019-08-07 06:48:03.0, 0, 432, 239, 5, 5, {"Customer Test Spec":"na","WaferID_read":"OCR","Index X(mm)":"692","Fab Device":"PY1603V2D","WF_Size":"12","Map Reference":"(332,30);(220,239)","TestDieMinX":"9","Theory Test Time":"3.07","Retest Rate":"0","TestDieMinY":"7","Inner MotherLot":"PRAMD31009","Stop Yield":"88","Index Y(mm)":"1247","shipLot":"AP23814","Wafer_Sequence":"1-25","Lot Status":"1","Lot Start Time":"2019-08-04 20:31:08.0","Site To Site":"CP1:5;CP2:5","MES Stand Gross Die":"77891","Inner Lot":"PRAMD31009.08","Asy Device":"NA","Notch":"180-Degree","Sites":"64","Hold Count":"0","GPIB_Bin":"0","PE Owner":"Wales","MaxX":"437","MaxY":"243","Process Short Flow":"TB1-CP1-BK1-CP2-WV1-WP1-WPF","Is Trimed":"False","Process Yield":"NA|93.00","OS Bins":"2","Slot":"25","Pass Bins":"1","Tester SoftWare Revision":"CRAFT_3380_2.40-SP7","Chines Short Name":"NA","Is OTP":"False","Assigned Testers":"NA","Wip Stage":"C","Prober Device":"PRA2N4M25XTNTCVA","PO Number":"NA","Load File":"na","Special Bins":"na","DataBase":"TEL","Continue Fail":"10ea","TestDieMaxX":"432","TestDieMaxY":"241","MES Test Gross Die":"77891","CP Yields":"CP1&97.15%;CP2&96.50%;","RightID":"25","TestTime":"3","Tester Model":"Chroma","Major Fail":"na","Chinese Name":"普冉半导体(上海)有限公司","Part DESC":"双定位,v4.01","ALL CP Programs":"CP1T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP1;CP2T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP2;","Worker Order":"PRA20190801.2","Wip Step":"CP2T0","customerNotch":"NA","Wafer PCS":"5","Is COP":"False","CTC PO Number":"NA"}, V888, V_PY1603V2D_P25Q40HD_25C_V04_02_CP2, TTH-20, PTL-07, PY1603V2A-PC-19, PS_PRA_CP25Q40HDWF12, 4, 2019-08-07 06:15:03.0, 77891, 75161, 2730, 96.5, 2019-08-07 06:48:03.0, 0, 432, 239, 5, 5, {"Customer Test Spec":"na","WaferID_read":"OCR","Index X(mm)":"692","Fab Device":"PY1603V2D","WF_Size":"12","Map Reference":"(332,30);(220,239)","TestDieMinX":"9","Theory Test Time":"3.07","Retest Rate":"0","TestDieMinY":"7","Inner MotherLot":"PRAMD31009","Stop Yield":"88","Index Y(mm)":"1247","shipLot":"AP23814","Wafer_Sequence":"1-25","Lot Status":"1","Lot Start Time":"2019-08-04 20:31:08.0","Site To Site":"CP1:5;CP2:5","MES Stand Gross Die":"77891","Inner Lot":"PRAMD31009.08","Asy Device":"NA","Notch":"180-Degree","Sites":"64","Hold Count":"0","GPIB_Bin":"0","PE Owner":"Wales","MaxX":"437","MaxY":"243","Process Short Flow":"TB1-CP1-BK1-CP2-WV1-WP1-WPF","Is Trimed":"False","Process Yield":"NA|93.00","OS Bins":"2","Slot":"25","Pass Bins":"1","Tester SoftWare Revision":"CRAFT_3380_2.40-SP7","Chines Short Name":"NA","Is OTP":"False","Assigned Testers":"NA","Wip Stage":"C","Prober Device":"PRA2N4M25XTNTCVA","PO Number":"NA","Load File":"na","Special Bins":"na","DataBase":"TEL","Continue Fail":"10ea","TestDieMaxX":"432","TestDieMaxY":"241","MES Test Gross Die":"77891","CP Yields":"CP1&97.15%;CP2&96.50%;","RightID":"25","TestTime":"3","Tester Model":"Chroma","Major Fail":"na","Chinese Name":"普冉半导体(上海)有限公司","Part DESC":"双定位,v4.01","ALL CP Programs":"CP1T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP1;CP2T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP2;","Worker Order":"PRA20190801.2","Wip Step":"CP2T0","customerNotch":"NA","Wafer PCS":"5","Is COP":"False","CTC PO Number":"NA"}]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220003} Types : [VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, INTEGER, INTEGER, INTEGER, DOUBLE, TIMESTAMP, INTEGER, INTEGER, INTEGER, INTEGER, INTEGER, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, VARCHAR, TIMESTAMP, INTEGER, INTEGER, INTEGER, DOUBLE, TIMESTAMP, INTEGER, INTEGER, INTEGER, INTEGER, INTEGER, VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220003} executed. 16.158813 millis. INSERT INTO vtdaprober.bin_wafer_summary(custom_code, device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, map_cols, map_rows, min_x, min_y, others_params)
+        VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        ON DUPLICATE KEY UPDATE oprator=?, tester_program=?, tester_id=?, prober_id=?, Prober_card_id=?, pid_name=?, pid_version=?, start_time=?, gross_die=?, pass_die=?, fail_die=?, yield=?, end_time=?, check_status=?, map_cols=?, map_rows=?, min_x=?, min_y=?, others_params=?,load_time=now();
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-210001, pstmt-220003} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-210001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} Parameters : [TTH-20]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} Types : [VARCHAR]
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} executed. 9.319602 millis. SELECT custom_code as customer_code,device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, check_result,map_cols, map_rows, min_x, min_y, others_params FROM VTPTMT.bin_wafer_summary WHERE tester_id=?;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150012} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150012} Header: [custom_code, device, lot_id, cp_step, wafer_no, oprator, tester_program, tester_id, prober_id, Prober_card_id, pid_name, pid_version, start_time, gross_die, pass_die, fail_die, yield, end_time, check_status, check_result, map_cols, map_rows, min_x, min_y, others_params]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150012} Result: [PRA, P25Q40HDWF, AP23816, CP2, AP23816-14-C7, V100, V_PY1603V2D_P25Q40HD_25C_V04_02_CP2, TTH-20, PTL-07, PY1603V2A-PC-19, PS_PRA_CP25Q40HDWF12, 4, 2019-08-07 11:12:22.0, 77891, 75796, 2095, 97.31, 2019-08-07 12:41:02.0, 0, 10 interflow Fail;, 432, 239, 5, 5, {"Customer Test Spec":"na","WaferID_read":"OCR","Index X(mm)":"692","Fab Device":"PY1603V2D","WF_Size":"12","Map Reference":"(332,30);(220,239)","TestDieMinX":"9","Theory Test Time":"3.07","Retest Rate":"0","TestDieMinY":"7","Inner MotherLot":"PRAMD31010","Stop Yield":"88","Index Y(mm)":"1247","shipLot":"AP23816","Wafer_Sequence":"1-25","Lot Status":"1","Lot Start Time":"2019-08-04 20:33:48.0","Site To Site":"CP1:5;CP2:5","MES Stand Gross Die":"77891","Inner Lot":"PRAMD31010.07","Asy Device":"NA","Notch":"180-Degree","Sites":"64","Hold Count":"0","GPIB_Bin":"0","PE Owner":"Wales","MaxX":"437","MaxY":"243","Process Short Flow":"TB1-CP1-BK1-CP2-WV1-WP1-WPF","Is Trimed":"False","Process Yield":"NA|93.00","OS Bins":"2","Slot":"14","Pass Bins":"1","Tester SoftWare Revision":"CRAFT_3380_2.40-SP7","Chines Short Name":"NA","Is OTP":"False","Assigned Testers":"NA","Wip Stage":"B","Prober Device":"PRA2N4M25XTNTCVA","PO Number":"NA","Load File":"na","Special Bins":"na","DataBase":"TEL","Continue Fail":"10ea","TestDieMaxX":"432","TestDieMaxY":"241","MES Test Gross Die":"77891","CP Yields":"CP1&97.47%;CP2&97.31%;","RightID":"14","TestTime":"90","Tester Model":"Chroma","Major Fail":"na","Chinese Name":"普冉半导体(上海)有限公司","Part DESC":"双定位,v4.01","ALL CP Programs":"CP1T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP1;CP2T0:V_PY1603V2D_P25Q40HD_25C_V04_02_CP2;","Worker Order":"PRA20190801.3","Wip Step":"CP2T0","customerNotch":"NA","Wafer PCS":"5","Is COP":"False","CTC PO Number":"NA"}]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120002, rs-150012} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120002} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} Parameters : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} Types : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} executed. 8.589223 millis. SELECT custom_code,device FROM VTPTMT.mes_data_from;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Header: [custom_code, device]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [AMC, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [ANE, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [ASH, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, P7516F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, P7516G]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKB28C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKB28E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKE81C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKE81D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKE81E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKR49C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKR49D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKR49E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMKR49F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMLP50A]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BES, TMLP50B]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, P7516F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, P7516G]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKB28C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKB28E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKE81C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKE81D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKE81E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKR49C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKR49D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKR49E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMKR49F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMLP50A]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [BID, TMLP50B]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, P7516F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, P7516G]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKB28C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKB28E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKE81C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKE81D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKE81E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKR49C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKR49D]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKR49E]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMKR49F]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMLP50A]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [EJQ, TMLP50B]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [FJT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [FUA, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [HGK, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [HTS, HS8786B1]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [HTS, HS8787C]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [HTS, HS8916CMS1A1.BP]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [HTS, HS8916CMS1A3.CP]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [HUT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [JSC, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [MOT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [SKC, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [SLA, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [TDT, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} Result: [YFN, ALL]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120003, rs-150013} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120003} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Parameters : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Types : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} executed. 8.826852 millis. SELECT host,init_url,acode FROM VTPTMT.mesconfig;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150014} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150014} Header: [host, init_url, acode]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150014} Result: [http://vtmesap01, http://vtmesap01/vt_mes/ajaxprocess.aspx, 65195845153489435181]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150014} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-connect
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit false
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Parameters : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} Types : []
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} executed. 2.443702 millis. SELECT host,init_url,acode FROM VTPTMT.mesconfig;
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150015} open
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150015} Header: [host, init_url, acode]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150015} Result: [http://vtmesap01, http://vtmesap01/vt_mes/ajaxprocess.aspx, 65195845153489435181]
+DEBUG http-nio-10013-exec-2 druid.sql.ResultSet - {conn-110001, pstmt-120004, rs-150015} closed
+DEBUG http-nio-10013-exec-2 druid.sql.Statement - {conn-110001, pstmt-120004} clearParameters. 
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} commited
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} setAutoCommit true
+DEBUG http-nio-10013-exec-2 druid.sql.Connection - {conn-110001} pool-recycle
