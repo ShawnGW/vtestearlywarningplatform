@@ -193,13 +193,13 @@ public class TelProberMappingSmallDieParse {
         properties.put("Index X(mm)", "NA");
         properties.put("Index Y(mm)", "NA");
         properties.put("Map Cols", String.valueOf(cols));
-        properties.put("Map Rows", String.valueOf(Rows));
+        properties.put("Map Rows", String.valueOf(maxY - MinY + 1));
         properties.put("Notch", "NA");
         properties.put("Retest Rate", "0");
         properties.put("WF_Size", "NA");
         properties.put("MinX", String.valueOf(MinX));
         properties.put("MinY", String.valueOf(MinY));
-        properties.put("MaxX", String.valueOf(maxX));
+        properties.put("MaxX", String.valueOf(maxX - 1));
         properties.put("MaxY", String.valueOf(maxY));
         properties.put("TestDieMinX", String.valueOf(testDieMinX));
         properties.put("TestDieMinY", String.valueOf(testDieMinY));
